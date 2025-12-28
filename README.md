@@ -28,7 +28,7 @@ Une fois que toutes les fonctions seront réalisées, je vais étudier différen
 Complexités de calcul, pour $n$ la taille des entiers :
 
 - big_add : $O(n)$
-- big_mult : $O(n^2)$ (une fois opti $O(n^1.5)$)
+- big_mult : $O(n^2)$ (une fois opti $O(n^{1.5})$ )
 - big_div/reste : $O(n)$ avec $n$ la taille du dividende
 - big_pow : $O(n^2 log(p))$
 
@@ -36,4 +36,4 @@ Complexités de calcul, pour $n$ la taille des entiers :
 J'ai trouvé un algo de division en $O(n)$ !!!!
 
 
-Pour l'instant, le problème qui m'embête, c'est de réussir à convertir en chaîne de caractère ou au moins à rendre printable un bigint, pour l'instant la méthode la plus simple que j'ai en tête est l'évaluation d'un polynôme en $2^32$, ce qui donnerait $n$ addition, et $n$ multiplications par $2^32$, chacune en $O(n)$, donc au total en $O(n^2)$, pas fifou...
+Pour l'instant, le problème qui m'embête, c'est de réussir à convertir en chaîne de caractère ou au moins à rendre printable un bigint, pour l'instant la méthode la plus simple que j'ai en tête est l'évaluation d'un polynôme en $2^{32}$, ce qui donnerait $n$ addition, et $n$ multiplications par $2^{32}$, chacune en $O(n)$, donc au total en $O(n^2)$, pas fifou...
