@@ -1,45 +1,39 @@
 # Nouveau Projet : Construction d'une librairie de Bigint et de Matrices
 
 
-Je vais séparer le projet en plusieurs étapes :
+Le but de ce projet de dev est de coder une librairie C pour utiliser des entiers de taille variable (et pas limités à 32/64 bits), comme en python. Ensuite, le véritable objectif est de coder une librairie de matrices d'entiers en C, optimisé pour le calcul de puissances de matrices, avec un essai d'utilisation pour calculer la suite de Fibonnacci.
 
-1 - Créer un type bigint, avec des fonctions associées, pas optimisées :
-    - new_bigint : int -> bigint
-    - big_add : bigint * bigint -> bigint
-    - big_mult : bigint * bigint -> bigint
-    - big_div : bigint * bigint -> bigint
-    - big_mod : bigint * bigint -> bigint
-    - big_pow : bigint * int -> bigint
+Le projet se décompose donc en 2 parties :
 
+- bigint : une librairie d'entiers à tailles variables
+- matrix : une librairie de matrices d'entiers à tailles variables, de dimensions souhaitées
 
-2 - Optimiser les fonctions suivantes :
-    - mult : algo Karatsuba
-    - pow : exp rapide et optimisation variables intermédiaires
+Le dépôt git contient 2 dossiers :
+
+- lib : le code
+- tests : un ensemble de tests (entre 3 et 10) pour (quasiment) chaque fonction. Toutes les fonctions testées sont notées "CORRECTE" dans le header des librairies, sinon "ADMISE" (pour celles triviales).
 
 
+Pour réaliser ce projet, je vais coder au moins une fonction par jour, sans les (beaucoup) optimiser pour l'instant.
 
-3 - Créer un type matrix, avec des fonctions associées, pas optimisées :
-    - new_matrix : int * int -> bigint
-    - matrix_add : matrix * matrix -> matrix
-    - matrix_lambda : matrix * lambda -> matrix
-    - matrix_mult : matrix * matrix -> matrix
-    - matrix_pow : matrix * int -> matrix
+Une fois que toutes les fonctions seront réalisées, je vais étudier différents algorithmes pour optimiser le calcul :
+
+- bigin_mul : algo de Karatsuba
+- bigint_pow : optimisation des variables intermédiaires dans l'exponientation rapide
+- matrix_pow : algorithme de Strassen
+    -> Structure des matrices par arbre.
+- division : algorithme de division binomiale
 
 
+Complexités de calcul, pour $n$ la taille des entiers :
+
+- big_add : $O(n)$
+- big_mult : $O(n^2)$ (une fois opti $O(n^1.5)$)
+- big_div/reste : $O(n)$ avec $n$ la taille du dividende
+- big_pow : $O(n^2 log(p))$
 
 
+J'ai trouvé un algo de division en $O(n)$ !!!!
 
-# 1 - Création du type Bigint
 
-## A) Structure
-
-On définit un bigint signé par un tableau d'entiers 32 bits (32 pour simplifier les multiplications plus tard) :
-
-```C
-struct bigint_s {
-    bool signe;
-
-    int taille;
-    uint32_t* arr;
-}
-```# TIPE
+Pour l'instant, le problème qui m'embête, c'est de réussir à convertir en chaîne de caractère ou au moins à rendre printable un bigint, pour l'instant la méthode la plus simple que j'ai en tête est l'évaluation d'un polynôme en $2^32$, ce qui donnerait $n$ addition, et $n$ multiplications par $2^32$, chacune en $O(n)$, donc au total en $O(n^2)$, pas fifou...

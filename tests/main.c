@@ -6,6 +6,7 @@
 #include "test_bigint_copy.c"
 #include "test_bigint_cmp.c"
 #include "test_bigint_optimize.c"
+#include "test_bigint_taille_after_add.c"
 
 int main() {
     printf("Lancement des tests\n\n");
@@ -36,6 +37,12 @@ int main() {
 
     printf("Test de la fonction bigint_optimize()\n");
     test_bigint_optimize();
+    printf("%sTests passés avec succès !%s\n\n\n", GREEN, DEFAULT_STYLE);
+
+
+
+    printf("Test de la fonction bigint_taille_after_add()\n");
+    test_bigint_taille_after_add();
     printf("%sTests passés avec succès !%s\n\n\n", GREEN, DEFAULT_STYLE);
 
 

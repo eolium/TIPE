@@ -30,6 +30,8 @@ int bigint_cmp(const bigint* A, const bigint* B); // CORRECTE
 
 void bigint_optimize(bigint* A);
 
+int bigint_taille_after_add(bigint A, bigint B);
+
 bigint bigint_add(bigint A, bigint B); // DONE
 
 void big_add(bigint* A, bigint B); // DONE

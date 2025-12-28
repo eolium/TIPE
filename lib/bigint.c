@@ -156,7 +156,7 @@ void bigint_optimize(bigint* A) {
 }
 
 
-/*int add_size_taille(bigint A, bigint B) {
+int bigint_taille_after_add(bigint A, bigint B) {
     int size_max = max(A.taille, B.taille);
 
     if (((uint64_t) A.arr[A.taille - 1] + (uint64_t) B.arr[B.taille - 1] + 1) >> 32 > 0) {
@@ -167,7 +167,7 @@ void bigint_optimize(bigint* A) {
 }
 
 
-void big_add(bigint* A, bigint B) {
+/*void big_add(bigint* A, bigint B) {
     int size = add_size_taille(*A, B);
 
     if (size == A->taille) {
